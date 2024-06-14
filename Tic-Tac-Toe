@@ -1,0 +1,65 @@
+#include <stdio.h>
+
+void printBoard(int board[][3]) {
+	for (int i = 0; i < 3; i++) {
+		char firSym = getIcon(board[i][0]);
+		char secSym = getIcon(board[i][1]);
+		char thiSym = getIcon(board[i][2]);
+		printf(" %c  |  %c  |  %c \n\n", firSym, secSym, thiSym);
+		printf("------------------\n");
+	}
+}
+
+char getIcon(int sym) {
+	if (sym == 0) {
+		return ' ';
+	}
+	else if (sym == 1) {
+		return 'X';
+	}
+	else {
+		return 'O';
+	}
+}
+
+int getChoice(int  board[][3]) {
+
+}
+
+int gameWon(int  board[][3]) {
+	
+	
+
+	
+	if (boardFull(board)) {
+		printf("The game has ended with a tie.");
+		return 1;
+	}
+	return 0;
+}
+
+// Will Check if the board is full
+int boardFull(int  board[][3]) {
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 3; j++) {
+			if (board[i][j] == 0) {
+				return 0;
+			}
+		}
+	}
+	// If none of the values are empty return true.
+	return 1;
+}
+
+int main(void) {
+	int board[3][3];
+	int running = 1;
+
+	while (running) {
+		if (gameWon(board)) {
+			running = 0;
+			break;
+		}
+		printBoard(board);
+	}
+}
